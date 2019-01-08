@@ -1,4 +1,4 @@
-/*! THIS FILE IS GENERATED FROM PACKAGE @okta/courage@4.6.0-alpha.2029.ga661856 */
+/*! THIS FILE IS GENERATED FROM PACKAGE @okta/courage@4.6.0-beta.2050.g7ec8178 */
 module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -3347,7 +3347,6 @@ function getRoute(router, route) {
 
   constructor: function () {
     this.features = window._features || [];
-    this.possibleFeatures = window._possibleFeatures || [];
     __WEBPACK_IMPORTED_MODULE_1__models_Model__["default"].apply(this, arguments);
   },
 
@@ -3357,7 +3356,10 @@ function getRoute(router, route) {
    * @return {Boolean}
    */
   hasFeature: function (feature) {
-    if (!__WEBPACK_IMPORTED_MODULE_0__underscore_wrapper__["default"].contains(this.possibleFeatures, feature) && window.okta && window.okta.logHasFeatureError) {
+    if (window._possibleFeatures
+          && !__WEBPACK_IMPORTED_MODULE_0__underscore_wrapper__["default"].contains(window._possibleFeatures, feature)
+          && window.okta
+          && window.okta.logHasFeatureError) {
       window.okta.logHasFeatureError(feature);
     }
     return __WEBPACK_IMPORTED_MODULE_0__underscore_wrapper__["default"].contains(this.features, feature);
@@ -9404,7 +9406,7 @@ function defaultOptions(property) {
   const values = property.get('__possibleValues__');
   const name = property.get('name');
   const title = property.get('title');
-  /* eslint complexity: [2, 22] */
+  /* eslint complexity: [2, 24] */
 
   const inputOptions = {
     type: 'text',
@@ -9462,7 +9464,9 @@ function defaultOptions(property) {
     break;
   case 'uri':
   case 'country-code':
+  case 'country_code':
   case 'language-code':
+  case 'language_code':
   case 'email':
   case 'locale':
   case 'timezone':
